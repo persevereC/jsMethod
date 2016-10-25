@@ -1,0 +1,14 @@
+1.规定范围取随机整数
+    function randomInt(min,max){
+        return Math.floor(Math.random()*(max-min+1))+min;
+    };
+    
+2.随机获取数组中的值
+    function randomArr(arr){
+        return arr[Math.floor(Math.random()*arr.length)];
+    };
+    
+3.生成从0到指定值的数字数组
+    var arr=[];length=10;i=3;
+    for(;arr.push(i++)<length;){};
+    console.log(arr);
