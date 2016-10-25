@@ -12,3 +12,8 @@
     var arr=[];length=10;i=3;
     for(;arr.push(i++)<length;){};
     console.log(arr);
+    
+4.打乱数组内元素的顺序
+    arr.sort(function(){
+        return Math.random()-0.5
+    })
