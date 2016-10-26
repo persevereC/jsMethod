@@ -18,6 +18,16 @@
     
 3.每个字符出现的次数
     var info = str.split('').reduce((p, k) => (p[k]++ || (p[k] = 1), p), {});
+    或
+    function charStats(str) {
+        var visitStats = {};
+        for (var i = 0; i < str.length; i++) {
+            var char = str[i];
+            if (!visitStats[char]++)
+                visitStats[char] = 1;
+        }
+        return visitStats;
+    }
     
 4.快速排序
     function quickSort(arr) {
