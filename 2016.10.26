@@ -1,0 +1,38 @@
+1.判断是否是回文
+    function isHui(str){
+        return str==str.split('').reverse().join('');
+    };
+    
+2.去重
+    function unique(arr){
+        let obj={};
+        let data=[];
+        for(let i=0,l=arr.length;i<l;i++){
+            if(!obj[arr[i]]){
+                obj[arr[i]]=true;
+                data.push(arr[i]);
+            }
+        }
+        return data;
+    }
+    
+3.每个字符出现的次数
+    var info = str.split('').reduce((p, k) => (p[k]++ || (p[k] = 1), p), {});
+    
+4.快速排序
+    function quickSort(arr) {
+        if(arr.length<=1) {
+            return arr;
+        }
+        let leftArr = [];
+        let rightArr = [];
+        let q = arr[0];
+        for(let i = 1,l=arr.length; i<l; i++) {
+            if(arr[i]>q) {
+                rightArr.push(arr[i]);
+            }else{
+                leftArr.push(arr[i]);
+            }
+        }
+        return [].concat(quickSort(leftArr),[q],quickSort(rightArr));
+    }
