@@ -1,0 +1,31 @@
+1.回调函数
+
+2.AOP（面向切面编程）比如测试函数的执行效率：
+  var service = function(){
+      console.log('功能逻辑...');
+  }
+  var test = (function(){
+      var time_start;
+      return {
+          before: function(){
+              time_start = (+new Date());
+              console.log('计时开始...');
+          },
+          after: function(){
+              var end = (+new Date()) - time_start;
+              console.log('计时结束，用时：' + end);
+          } 
+      }
+  })();
+  var aop = function(fn, proxy){
+      proxy.before && proxy.before();
+      fn();
+      proxy.after && proxy.after();
+  }
+  aop(service, test);
+  
+3.柯里化
+4.反柯里化
+5.函数节流
+6.分时函数
+7.惰性加载
