@@ -25,7 +25,90 @@
   aop(service, test);
   
 3.柯里化
+  var currying = function(fn){
+      var args = [];
+      return function(){
+          if(!!arguments.length) {
+              [].push.apply(args, arguments);
+              return arguments.callee;
+          } else {
+              return fn.apply(this, args);
+          }
+      }
+  }
+  var sum = (function(num){
+      var ret = 0;
+      return function(){
+          for(var i = 0, len = arguments.length; i < len; i++) {
+              ret += arguments[i];
+          }
+          return ret;
+      }
+  })();
+  var newSum = currying(sum);
+  newSum(1)(2)(3)(4)();
+  
 4.反柯里化
-5.函数节流
+  Array.forEach = function(){
+      var fn = [].pop.call(arguments);
+      var arr = arguments.length > 1 ? arguments : arguments[0];
+      return [].forEach.call(arr, fn);
+  }
+  Array.forEach(1, 2, 3, function(i){
+      console.log(i);     // 1 2 3
+  });
+  Array.forEach('123', function(i){
+      console.log(i);     // 1 2 3
+  });
+  Array.forEach({
+      '0': 1,
+      '1': 2,
+      '2': 3,
+      'length': 3
+  }, function(i){
+      console.log(i);     // 1 2 3
+  });
+  
+5.函数节流（当页面滚动到底部时，会触发 Ajax 去请求数据；当页面滚动频繁时，就可能出现上个请求还未结束又开始了一个新的请求。
+这个时候就需要用函数节流了）：
+  var getData = (function(){
+      var onAjax = false;     // 是否开始 ajax
+      return function(callback){
+          if(!onAjax) {
+              onAjax = true;
+              $.get('/xxx', function(data){
+                  callback(data);
+                  onAjax = false;
+              });
+          }
+      }
+  })();
+  $(window).scroll(function(){
+      if(滚动到底部) {
+          getData(render);
+       }
+  });
+
 6.分时函数
+  //  arr: 源数据
+  //  process: 处理函数
+  //  count: 每次抽取个数
+  var chunk = function(arr, process, count){
+      setTimeout(function(){
+          for(var i = 0; i < Math.min(count, arr.length); i++) {
+              process(arr.shift());
+          }
+          if(arr.length > 0) {
+              setTimeout(arguments.callee, 100);
+          }
+      }, 100);
+  }
+  
 7.惰性加载
+  var goToTop = (function(){
+      var isFF = /firefox/i.test(navigator.userAgent);
+      var docEl = document[ isFF ? 'documentElement' : 'body' ];
+      return function(){
+          docEl.scrollTop = 0;
+      }
+  })();
