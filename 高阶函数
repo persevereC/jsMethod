@@ -112,3 +112,12 @@
           docEl.scrollTop = 0;
       }
   })();
+
+8.阶乘函数（这样即使将fac赋给另一个变量也能正常运行）
+  var fac=(function f(num){
+      if(num<=1){
+          return 1;
+      }else{
+          return num*f(num-1)
+      }
+  })
