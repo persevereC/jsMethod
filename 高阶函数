@@ -142,3 +142,10 @@
       }
       return args
   }
+
+10.改连字符为驼峰写法
+   function camelStr (str){
+       return str.replace(/\-(\w)/g, function (match,originText) {
+           return originText.toUpperCase();
+       });
+   }
