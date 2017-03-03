@@ -1,0 +1,10 @@
+1.事件委托
+  document.addEventListener('DOMContentLoaded',function(){
+      let cont=document.getElementById('cont');
+      cont.addEventListener('click',function(e){
+          if(e.target && e.target.nodeName==='LI'){
+              let item=e.target;
+              alert('you clicked on item: ' + item.innerHTML);
+          }
+      })
+  })
