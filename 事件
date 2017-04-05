@@ -23,3 +23,12 @@
           elm['on' + evType] = fn;//DOM 0
       }
   }
+  
+  3.是否为数组
+    function isArray(value){
+        if (typeof Array.isArray === 'function') {
+            return Array.isArray(value);
+        } else {
+            return Object.prototype.toString.call(value) === '[object Array]';
+        }
+    }
