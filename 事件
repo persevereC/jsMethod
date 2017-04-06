@@ -24,11 +24,24 @@
       }
   }
   
-  3.是否为数组
-    function isArray(value){
-        if (typeof Array.isArray === 'function') {
-            return Array.isArray(value);
-        } else {
-            return Object.prototype.toString.call(value) === '[object Array]';
-        }
-    }
+3.是否为数组
+  function isArray(value){
+      if (typeof Array.isArray === 'function') {
+          return Array.isArray(value);
+      } else {
+          return Object.prototype.toString.call(value) === '[object Array]';
+      }
+  }
+
+4.根据id获取元素
+  function getById(id) {
+      var ele = null;
+      if(document.getElementById){ // DOM
+          ele = document.getElementById;
+      } else if (document.all) { // IE
+          ele = document.all[id];
+      } else if (document.layers) { // Netscape <= 4 
+          ele = document.layers[id];
+      }
+      return ele;
+  }
