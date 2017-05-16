@@ -79,3 +79,23 @@
            return num * f(num - 1);
         }
     });
+
+7.使用!!将变量转换成布尔类型,它能自动将任何类型的数据转换为布尔值.在我们需要判断某个变量是否存在时就可以用;
+
+8.使用+将变量转换成数字,+new Date()可以直接返回时间戳;
+
+9.使用||设置默认值;
+
+10.检测对象中的属性，要检查这个函数是否存在，你可以使用in运算符。如if ('querySelector' in documents) {};
+
+11.获取数组的最后一个元素,Array.prototype.slice(-1);
+
+12.数组截断,arr.length = 10;
+
+13.全部替换,String.replace(/abc/g, 'd');
+
+14.合并数组,arr1.concat(arr2)不会改变原数组，Array.push.apply（arr1，arr2），它不会创建一个新数组，而是将第二个数组合并到第一个数组中，以减少内存使用。
+
+15.把NodeList转换成数组,[] .slice.call（elements）或者Array.from(elements);
+
+16.打乱数组,arr.sort(function() {return Math.random() - 0.5;});
