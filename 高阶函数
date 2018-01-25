@@ -176,3 +176,9 @@
        return true;
     }
     
+12.获取某月的天数
+    function getDays(year, month){   //注意当月月份为month+1
+        month = parseInt(month, 10);  
+        var d= new Date(year, month, 0);  // 上个月最后一天
+        return d.getDate();  
+    }  
