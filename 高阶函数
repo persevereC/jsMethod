@@ -192,3 +192,35 @@
           total.concat(foo(str.slice(0, curIndex) + str.slice(curIndex + 1)).map(val => cur + val)), [])
       }
     }
+
+14.数组平均数
+    const average = arr => arr.reduce((total, val) => total + val, 0) / arr.length;
+   
+15.每个单词首字母大写
+    const upper = str => str.replace(/\b[a-z]/, i => i.toUpperCase());
+    
+16.监测回文
+    const palindrome = str => {
+      const s = str.toLowerCase().replace(/[\W_]/g,'');
+      return s === s.split('').reverse().join('');
+    }
+ 
+17.数组中值的出现次数
+    const countOccurrences = (arr, value) => arr.reduce((a, v) => v === value ? a + 1 : a + 0, 0);
+    
+18.Curry
+   const curry = (fn, arity = fn.length, ...args) =>
+     arity <= args.length ? fn(...args) : curry.bind(null, fn, arity, ...args);
+     
+19.Flaten Array
+    const deepFlatten = arr =>
+      arr.reduce((a, v) => a.concat(Array.isArray(v) ? deepFlatten(v) : v), []);
+      
+20.刷选出b中不包含的值
+    const difference = (a, b) => {
+      const s = new Set(b);
+      return a.filter(x => !s.has(x)) 
+    }
+
+21.两点之间距离
+    const distance = (x0, y0, x1, y1) => Math.hypot(x1 - x0, y1 - y0);
