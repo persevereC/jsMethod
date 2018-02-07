@@ -182,3 +182,13 @@
         var d= new Date(year, month, 0);  // 上个月最后一天
         return d.getDate();  
     }  
+
+13.字符串排列组合
+    var foo = str => {
+      if(str.length <= 2){
+        return str.length === 2 ? [str, str[1] + str[0]] : [str]
+      }else{
+        return str.split('').reduce((total, cur, curIndex) => 
+          total.concat(foo(str.slice(0, curIndex) + str.slice(curIndex + 1)).map(val => cur + val)), [])
+      }
+    }
